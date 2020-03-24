@@ -48,13 +48,12 @@ public class DivisionTableManager implements DivisionTableManagerDAO
 		System.out.println("Starting 'getDivisionById'");
 
 		Session session = sessionFactory.getCurrentSession();
-		
+
 		session.beginTransaction();
-		
+
 		Division myDivision = session.get(Division.class, id);
-		
 		session.getTransaction().commit();
-		
+
 		System.out.println("Finished 'getById'");
 		session.close();
 		
@@ -62,18 +61,19 @@ public class DivisionTableManager implements DivisionTableManagerDAO
 	}
 
 	@Override
-	public void save(Division division) 
+	public int save(Division division)
 	{
-		System.out.println("Starting 'storeDivision'");
+		System.out.println("Starting 'save'");
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
-		session.save(division);
+		int id = (int) session.save(division);
 		
 		session.getTransaction().commit();
 		session.close();
 		System.out.println("Done!");
-		
+
+		return id;
 	}
 
 	@Override
@@ -147,8 +147,8 @@ public class DivisionTableManager implements DivisionTableManagerDAO
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 		
-		List<Division> listDivisions = session.createQuery("from Division where name like %" + name + "%").list();
-		
+		List<Division> listDivisions = session.createQuery("from Division d where d.name like '%" + name + "%'").list();
+
 		session.getTransaction().commit();
 		System.out.println("Finished 'listByName'");
 		session.close();

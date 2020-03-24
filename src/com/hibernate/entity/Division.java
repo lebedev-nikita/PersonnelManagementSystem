@@ -9,23 +9,23 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="divisions")
-public class Division 
+public class Division
 {
 	@Id
-	//@SequenceGenerator(name="division_generator", sequenceName = "divisions_div_id_seq", allocationSize=1)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="div_id")
 	private int id;
-	
+
 	@Column(name="div_name")
 	private String name;
-	
+
 	@Column(name="head_div_id")
 	private int headDivId;
-	
+
 	@Column(name="chief_id")
 	private int chiefId;
-	
+
+	public Division() {}
 
 	public Division(String name, int headDivId, int chiefId) {
 		this.name = name;
@@ -69,6 +69,6 @@ public class Division
 	public String toString() {
 		return "Division [id=" + id + ", name=" + name + ", headDivId=" + headDivId + ", chiefId=" + chiefId + "]";
 	}
-	
-	
+
+
 }

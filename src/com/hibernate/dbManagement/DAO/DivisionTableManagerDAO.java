@@ -10,7 +10,7 @@ public interface DivisionTableManagerDAO
 	
 	public Division getById(int id);
 	
-	public void save(Division division);
+	public int save(Division division);
 	
 	public void update(Division division);
 	

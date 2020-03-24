@@ -52,7 +52,6 @@ public class EmployeeTableManager implements EmployeeTableManagerDAO
 		session.beginTransaction();
 		
 		Employee myEmployee = session.get(Employee.class, id);
-		
 		session.getTransaction().commit();
 		
 		System.out.println("Finished 'getById'");
@@ -62,17 +61,19 @@ public class EmployeeTableManager implements EmployeeTableManagerDAO
 	}
 
 	@Override
-	public void save(Employee employee) 
+	public int save(Employee employee)
 	{
 		System.out.println("Starting 'save'");
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
-		session.save(employee);
+		int id = (int) session.save(employee);
 		
 		session.getTransaction().commit();
 		session.close();
 		System.out.println("Done!");
+
+		return id;
 	}
 
 	@Override
@@ -115,8 +116,8 @@ public class EmployeeTableManager implements EmployeeTableManagerDAO
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 		
-		List<Employee> listEmployees = session.createQuery("from Employee where name like %" + name + 
-														   "% and surname like %" + surname + "%").list();
+		List<Employee> listEmployees = session.createQuery("from Employee where name like '%" + name +
+														   "%' and surname like '%" + surname + "%'").list();
 		
 		session.getTransaction().commit();
 		System.out.println("Finished 'listByNameSurname'");

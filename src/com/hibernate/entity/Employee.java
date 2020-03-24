@@ -1,30 +1,27 @@
 package com.hibernate.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="employees")
-public class Employee 
+public class Employee
 {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="emp_id")
 	private int id;
-	
+
 	@Column(name="surname")
 	private String surname;
-	
 	@Column(name="name")
 	private String name;
-	
+
 	@Column(name="patronymic")
 	private String patronymic;
-	
+
 	@Column(name="education")
 	private String education;
-	
+
 	public Employee() {}
 
 	public Employee(String surname, String name, String patronymic, String education) {
