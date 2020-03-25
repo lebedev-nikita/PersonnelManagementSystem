@@ -9,10 +9,10 @@ public class Position
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="pos_id")
-	private int id;
+	private Integer id;
 
 	@Column(name="div_id")
-	private int divisionId;
+	private Integer divisionId;
 
 	@Column(name="pos_name")
 	private String name;
@@ -22,25 +22,25 @@ public class Position
 
 	public Position() {}
 
-	public Position(int divisionId, String name, String responsibilities) {
+	public Position(Integer divisionId, String name, String responsibilities) {
 		this.divisionId = divisionId;
 		this.name = name;
 		this.responsibilities = responsibilities;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public int getDivisionId() {
+	public Integer getDivisionId() {
 		return divisionId;
 	}
 
-	public void setDivisionId(int divisionId) {
+	public void setDivisionId(Integer divisionId) {
 		this.divisionId = divisionId;
 	}
 

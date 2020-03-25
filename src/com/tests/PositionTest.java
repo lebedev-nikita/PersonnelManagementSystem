@@ -22,18 +22,18 @@ public class PositionTest
     public void test_setId_getId()
     {
         tmpPos.setId(10);
-        assertEquals(10, tmpPos.getId());
+        assertEquals(10, tmpPos.getId().intValue());
         tmpPos.setId(8);
-        assertEquals(8, tmpPos.getId());
+        assertEquals(8, tmpPos.getId().intValue());
     }
 
     @Test
     public void test_setDivisionId_getDivisionId()
     {
         tmpPos.setDivisionId(10);
-        assertEquals(10, tmpPos.getDivisionId());
+        assertEquals(10, tmpPos.getDivisionId().intValue());
         tmpPos.setDivisionId(8);
-        assertEquals(8, tmpPos.getDivisionId());
+        assertEquals(8, tmpPos.getDivisionId().intValue());
     }
 
     @Test

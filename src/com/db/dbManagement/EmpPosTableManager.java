@@ -1,4 +1,4 @@
-package com.hibernate.dbManagement;
+package com.db.dbManagement;
 
 import java.util.List;
 
@@ -6,9 +6,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.hibernate.dbManagement.DAO.EmpPosTableManagerDAO;
+import com.db.dbManagement.DAO.EmpPosTableManagerDAO;
 import com.hibernate.entity.EmpPos;
-import com.hibernate.entity.Employee;
 
 public class EmpPosTableManager implements  EmpPosTableManagerDAO
 {
@@ -53,7 +52,7 @@ public class EmpPosTableManager implements  EmpPosTableManagerDAO
 		
 		session.getTransaction().commit();
 		session.close();
-		System.out.println("Done!");
+		System.out.println("Finished 'save'!");
 	}
 
 	@Override
@@ -76,13 +75,16 @@ public class EmpPosTableManager implements  EmpPosTableManagerDAO
 		System.out.println("Starting 'delete'");
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
-		
+
+		System.out.println(79);
 		session.delete(empPos);
-		
-		
+		System.out.println(81);
+
 		session.getTransaction().commit();
+		System.out.println(84);
 		session.close();
-		System.out.println("Finished 'delete'");	
+		System.out.println(86);
+		System.out.println("Finished 'delete'");
 	}
 
 	// unchecked
@@ -93,11 +95,10 @@ public class EmpPosTableManager implements  EmpPosTableManagerDAO
 		System.out.println("Starting 'listByEmpId'");
 
 		Session session = sessionFactory.getCurrentSession();
-		
 		session.beginTransaction();
-		
+
 		List<EmpPos> listEmpPos = session.createQuery("from EmpPos where employeeId=" + empId).list();
-		
+
 		session.getTransaction().commit();
 		
 		System.out.println("Finished 'listByEmpId'");

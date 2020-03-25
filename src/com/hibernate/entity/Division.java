@@ -14,30 +14,30 @@ public class Division
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="div_id")
-	private int id;
+	private Integer id;
 
 	@Column(name="div_name")
 	private String name;
 
 	@Column(name="head_div_id")
-	private int headDivId;
+	private Integer headDivId;
 
 	@Column(name="chief_id")
-	private int chiefId;
+	private Integer chiefId;
 
 	public Division() {}
 
-	public Division(String name, int headDivId, int chiefId) {
+	public Division(String name, Integer headDivId, Integer chiefId) {
 		this.name = name;
 		this.headDivId = headDivId;
 		this.chiefId = chiefId;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -49,19 +49,19 @@ public class Division
 		this.name = name;
 	}
 
-	public int getHeadDivId() {
+	public Integer getHeadDivId() {
 		return headDivId;
 	}
 
-	public void setHeadDivId(int headDivId) {
+	public void setHeadDivId(Integer headDivId) {
 		this.headDivId = headDivId;
 	}
 
-	public int getChiefId() {
+	public Integer getChiefId() {
 		return chiefId;
 	}
 
-	public void setChiefId(int chiefId) {
+	public void setChiefId(Integer chiefId) {
 		this.chiefId = chiefId;
 	}
 

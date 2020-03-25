@@ -1,4 +1,4 @@
-package com.hibernate.dbManagement.DAO;
+package com.db.dbManagement.DAO;
 
 import java.util.List;
 
@@ -15,6 +15,7 @@ public interface EmployeeTableManagerDAO
 	public void update(Employee employee);
 
 	public void delete(Employee employee);
+
 	
 	public List<Employee> listByNameSurname(String name, String surname);
 }

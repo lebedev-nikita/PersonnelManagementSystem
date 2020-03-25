@@ -20,9 +20,9 @@ public class EmployeeTest
     public void test_setId_getId()
     {
         tmpEmployee.setId(10);
-        assertEquals(10, tmpEmployee.getId());
+        assertEquals(10, tmpEmployee.getId().intValue());
         tmpEmployee.setId(8);
-        assertEquals(8, tmpEmployee.getId());
+        assertEquals(8, tmpEmployee.getId().intValue());
     }
 
     @Test

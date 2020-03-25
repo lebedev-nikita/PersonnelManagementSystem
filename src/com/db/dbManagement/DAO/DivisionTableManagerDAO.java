@@ -1,4 +1,4 @@
-package com.hibernate.dbManagement.DAO;
+package com.db.dbManagement.DAO;
 
 import java.util.List;
 

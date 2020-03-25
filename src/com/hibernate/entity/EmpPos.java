@@ -2,75 +2,89 @@ package com.hibernate.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
+import java.sql.Date;
+
 @Entity
-@Table(name="div_pos")
-public class EmpPos 
+@Table(name="emp_pos")
+public class EmpPos
 {
+	@Id
+	@Column(name="emp_pos_id")
+	private Integer id;
+
 	@Column(name="emp_id")
-	private int employeeId;
-	
+	private Integer employeeId;
+
 	@Column(name="pos_id")
-	private int positionId;
-	
+	private Integer positionId;
+
 	@Column(name="start_date")
-	private String startDate;
-	
+	private Date startDate;
+
 	@Column(name="finish_date")
-	private String finishDate;
-	
+	private Date finishDate;
+
 	@Column(name="salary")
-	private int salary;
-	
+	private Integer salary;
+
 	public EmpPos() {}
 
-	public EmpPos(int employeeId, int positionId, String startDate, String finishDate, int salary) {
-		super();
+	public EmpPos(Integer employeeId, Integer positionId, String startDate, String finishDate, Integer salary) {
 		this.employeeId = employeeId;
 		this.positionId = positionId;
-		this.startDate = startDate;
-		this.finishDate = finishDate;
+		this.startDate = Date.valueOf(startDate);
+		this.finishDate = Date.valueOf(finishDate);
 		this.salary = salary;
 	}
 
-	public int getEmployeeId() {
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getEmpId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(int employeeId) {
+	public void setEmpId(Integer employeeId) {
 		this.employeeId = employeeId;
 	}
 
-	public int getPositionId() {
+	public Integer getPosId() {
 		return positionId;
 	}
 
-	public void setPositionId(int positionId) {
+	public void setPosId(Integer positionId) {
 		this.positionId = positionId;
 	}
 
 	public String getStartDate() {
-		return startDate;
+		return startDate.toString();
 	}
 
 	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+		this.startDate = Date.valueOf(startDate);
 	}
 
 	public String getFinishDate() {
-		return finishDate;
+		return finishDate.toString();
 	}
 
 	public void setFinishDate(String finishDate) {
-		this.finishDate = finishDate;
+		this.finishDate = Date.valueOf(finishDate);
 	}
 
-	public int getSalary() {
+	public Integer getSalary() {
 		return salary;
 	}
 
-	public void setSalary(int salary) {
+	public void setSalary(Integer salary) {
 		this.salary = salary;
 	}
 
@@ -79,6 +93,6 @@ public class EmpPos
 		return "DivPos [employeeId=" + employeeId + ", positionId=" + positionId + ", startDate=" + startDate
 				+ ", finishDate=" + finishDate + ", salary=" + salary + "]";
 	}
-	
-	
+
+
 }

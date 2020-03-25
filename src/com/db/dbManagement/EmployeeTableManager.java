@@ -1,4 +1,4 @@
-package com.hibernate.dbManagement;
+package com.db.dbManagement;
 
 import java.util.List;
 
@@ -6,8 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.hibernate.dbManagement.DAO.EmployeeTableManagerDAO;
-import com.hibernate.entity.Division;
+import com.db.dbManagement.DAO.EmployeeTableManagerDAO;
 import com.hibernate.entity.Employee;
 
 public class EmployeeTableManager implements EmployeeTableManagerDAO

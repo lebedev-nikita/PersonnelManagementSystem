@@ -1,6 +1,6 @@
 package com.tests;
 
-import com.hibernate.dbManagement.DivisionTableManager;
+import com.db.dbManagement.DivisionTableManager;
 import com.hibernate.entity.Division;
 import org.junit.Before;
 import org.junit.Test;
@@ -92,12 +92,12 @@ public class DivisionTableManagerTest
         List<Division> divList1 = dtm.listByChiefId(90);
         assertTrue(divList1.size() >= 3);
         for (Division div : divList1)
-            assertEquals(90, div.getChiefId());
+            assertEquals(90, div.getChiefId().intValue());
 
         List<Division> divList2 = dtm.listByChiefId(91);
         assertTrue(divList2.size() >= 3);
         for (Division div : divList2)
-            assertEquals(91, div.getChiefId());
+            assertEquals(91, div.getChiefId().intValue());
 
         dtm.delete(tmpDiv1);
         dtm.delete(tmpDiv2);
@@ -162,12 +162,12 @@ public class DivisionTableManagerTest
         List<Division> divList1 = dtm.listByHeadDivId(1);
         assertTrue(divList1.size() >= 3);
         for (Division div : divList1)
-            assertEquals(1, div.getHeadDivId());
+            assertEquals(1, div.getHeadDivId().intValue());
 
         List<Division> divList2 = dtm.listByHeadDivId(2);
         assertTrue(divList2.size() >= 3);
         for (Division div : divList2)
-            assertEquals(2, div.getHeadDivId());
+            assertEquals(2, div.getHeadDivId().intValue());
 
         dtm.delete(tmpDiv1);
         dtm.delete(tmpDiv2);

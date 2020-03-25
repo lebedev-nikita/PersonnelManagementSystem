@@ -1,11 +1,9 @@
 package com.tests;
 
-import com.hibernate.dbManagement.EmployeeTableManager;
+import com.db.dbManagement.EmployeeTableManager;
 import com.hibernate.entity.Employee;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.List;
 
 import static org.junit.Assert.*;
 
