@@ -22,9 +22,9 @@ public class DivisionTableManagerTest
     @Test
     public void test_save_delete_getById()
     {
-        Division tmpDiv1 = new Division("Отдел аналитики", 0, 0);
-        Division tmpDiv2 = new Division("Отдел веб-дизайна", 0, 0);
-        Division tmpDiv3 = new Division("Отдел разработки", 0, 0);
+        Division tmpDiv1 = new Division("Отдел аналитики", 1, 1);
+        Division tmpDiv2 = new Division("Отдел веб-дизайна", 1, 1);
+        Division tmpDiv3 = new Division("Отдел разработки", 1, 1);
         dtm.save(tmpDiv1);
         dtm.save(tmpDiv2);
         dtm.save(tmpDiv3);
@@ -47,15 +47,15 @@ public class DivisionTableManagerTest
     @Test
     public void test_update()
     {
-        Division tmpDiv1 = new Division("Отдел аналитики", 0, 0);
-        Division tmpDiv2 = new Division("Отдел веб-дизайна", 0, 0);
-        Division tmpDiv3 = new Division("Отдел разработки", 0, 0);
+        Division tmpDiv1 = new Division("Отдел аналитики", 1, 1);
+        Division tmpDiv2 = new Division("Отдел веб-дизайна", 1, 1);
+        Division tmpDiv3 = new Division("Отдел разработки", 1, 1);
         dtm.save(tmpDiv1);
         dtm.save(tmpDiv2);
         dtm.save(tmpDiv3);
 
         tmpDiv1.setName("Тестовый отдел");
-        tmpDiv2.setHeadDivId(tmpDiv1.getId());
+        tmpDiv2.setHeadDivId(tmpDiv3.getId());
         tmpDiv3.setChiefId(10);
         dtm.update(tmpDiv1);
         dtm.update(tmpDiv2);
@@ -76,15 +76,15 @@ public class DivisionTableManagerTest
     @Test
     public void test_listByChiefId()
     {
-        Division tmpDiv1 = new Division("Отдел аналитики", 0, 90);
-        Division tmpDiv2 = new Division("Отдел веб-дизайна", 0, 90);
-        Division tmpDiv3 = new Division("Отдел разработки", 0, 90);
+        Division tmpDiv1 = new Division("Отдел аналитики", 1, 90);
+        Division tmpDiv2 = new Division("Отдел веб-дизайна", 1, 90);
+        Division tmpDiv3 = new Division("Отдел разработки", 1, 90);
         dtm.save(tmpDiv1);
         dtm.save(tmpDiv2);
         dtm.save(tmpDiv3);
-        Division tmpDiv4 = new Division("Отдел аналитики", 0, 91);
-        Division tmpDiv5 = new Division("Отдел веб-дизайна", 0, 91);
-        Division tmpDiv6 = new Division("Отдел разработки", 0, 91);
+        Division tmpDiv4 = new Division("Отдел аналитики", 1, 91);
+        Division tmpDiv5 = new Division("Отдел веб-дизайна", 1, 91);
+        Division tmpDiv6 = new Division("Отдел разработки", 1, 91);
         dtm.save(tmpDiv4);
         dtm.save(tmpDiv5);
         dtm.save(tmpDiv6);
@@ -111,15 +111,15 @@ public class DivisionTableManagerTest
     @Test
     public void test_listByName()
     {
-        Division tmpDiv1 = new Division("Отдел аналитики", 0, 90);
-        Division tmpDiv2 = new Division("Отдел аналитики", 0, 90);
-        Division tmpDiv3 = new Division("Отдел аналитики", 0, 90);
+        Division tmpDiv1 = new Division("Отдел аналитики", 1, 90);
+        Division tmpDiv2 = new Division("Отдел аналитики", 1, 90);
+        Division tmpDiv3 = new Division("Отдел аналитики", 1, 90);
         dtm.save(tmpDiv1);
         dtm.save(tmpDiv2);
         dtm.save(tmpDiv3);
-        Division tmpDiv4 = new Division("Отдел дизайна", 0, 90);
-        Division tmpDiv5 = new Division("Отдел дизайна", 0, 90);
-        Division tmpDiv6 = new Division("Отдел дизайна", 0, 90);
+        Division tmpDiv4 = new Division("Отдел дизайна", 1, 90);
+        Division tmpDiv5 = new Division("Отдел дизайна", 1, 90);
+        Division tmpDiv6 = new Division("Отдел дизайна", 1, 90);
         dtm.save(tmpDiv4);
         dtm.save(tmpDiv5);
         dtm.save(tmpDiv6);
@@ -146,15 +146,15 @@ public class DivisionTableManagerTest
     @Test
     public void test_listByHeadDivId()
     {
-        Division tmpDiv1 = new Division("Отдел аналитики", 1, 123);
-        Division tmpDiv2 = new Division("Отдел аналитики", 1, 123);
-        Division tmpDiv3 = new Division("Отдел аналитики", 1, 123);
+        Division tmpDiv1 = new Division("Отдел аналитики", 1, null);
+        Division tmpDiv2 = new Division("Отдел аналитики", 1, null);
+        Division tmpDiv3 = new Division("Отдел аналитики", 1, null);
         dtm.save(tmpDiv1);
         dtm.save(tmpDiv2);
         dtm.save(tmpDiv3);
-        Division tmpDiv4 = new Division("Отдел дизайна", 2, 123);
-        Division tmpDiv5 = new Division("Отдел дизайна", 2, 123);
-        Division tmpDiv6 = new Division("Отдел дизайна", 2, 123);
+        Division tmpDiv4 = new Division("Отдел дизайна", 2, null);
+        Division tmpDiv5 = new Division("Отдел дизайна", 2, null);
+        Division tmpDiv6 = new Division("Отдел дизайна", 2, null);
         dtm.save(tmpDiv4);
         dtm.save(tmpDiv5);
         dtm.save(tmpDiv6);
@@ -180,12 +180,12 @@ public class DivisionTableManagerTest
     @Test
     public void test_listAllDivisions()
     {
-        Division tmpDiv1 = new Division("Отдел аналитики", 1, 123);
-        Division tmpDiv2 = new Division("Отдел аналитики", 1, 123);
-        Division tmpDiv3 = new Division("Отдел аналитики", 1, 123);
-        Division tmpDiv4 = new Division("Отдел дизайна", 2, 123);
-        Division tmpDiv5 = new Division("Отдел дизайна", 2, 123);
-        Division tmpDiv6 = new Division("Отдел дизайна", 2, 123);
+        Division tmpDiv1 = new Division("Отдел аналитики", 1, null);
+        Division tmpDiv2 = new Division("Отдел аналитики", 1, null);
+        Division tmpDiv3 = new Division("Отдел аналитики", 1, null);
+        Division tmpDiv4 = new Division("Отдел дизайна", 2, null);
+        Division tmpDiv5 = new Division("Отдел дизайна", 2, null);
+        Division tmpDiv6 = new Division("Отдел дизайна", 2, null);
         dtm.save(tmpDiv1);
         dtm.save(tmpDiv2);
         dtm.save(tmpDiv3);

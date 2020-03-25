@@ -49,6 +49,12 @@
             url="${my-url}"
             userid="${my-userid}"
             password="${my-password}"
+            src="db/fill_emp.sql" />
+        <sql driver="${my-driver}"
+            classpath="${my-classpath}"
+            url="${my-url}"
+            userid="${my-userid}"
+            password="${my-password}"
             src="db/fill_div.sql" />
         <sql driver="${my-driver}"
             classpath="${my-classpath}"
@@ -56,12 +62,6 @@
             userid="${my-userid}"
             password="${my-password}"
             src="db/fill_pos.sql" />
-        <sql driver="${my-driver}"
-            classpath="${my-classpath}"
-            url="${my-url}"
-            userid="${my-userid}"
-            password="${my-password}"
-            src="db/fill_emp.sql" />
         <sql driver="${my-driver}"
             classpath="${my-classpath}"
             url="${my-url}"
