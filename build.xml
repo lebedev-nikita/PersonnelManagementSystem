@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project basedir="." default="create-db" name="PersonalManagementSystem">
-    <property name="my-driver"      value="org.postgresql.Driver" />
-    <property name="my-classpath"   value="lib/postgresql-42.2.10.jar" />
+    <property name="psql-driver"      value="org.postgresql.Driver" />
+    <property name="psql-classpath"   value="lib/postgresql-42.2.10.jar" />
     <property name="my-url"         value="jdbc:postgresql://localhost:5432/template1" />
     <property name="my-userid"      value="postgres" />
     <property name="my-password"    value="Password" />
 
 
-    <target name="create-db">
-        <sql driver="${my-driver}"
-            classpath="${my-classpath}"
+    <target name="init-db" depends="drop-db">
+        <sql driver="${psql-driver}"
+            classpath="${psql-classpath}"
             url="${my-url}"
             userid="${my-userid}"
             password="${my-password}"
@@ -20,8 +20,8 @@
     </target>
 
     <target name="drop-db">
-        <sql driver="${my-driver}"
-            classpath="${my-classpath}"
+        <sql driver="${psql-driver}"
+            classpath="${psql-classpath}"
             url="${my-url}"
             userid="${my-userid}"
             password="${my-password}"
@@ -32,42 +32,43 @@
     </target>
 
     <target name="fill-db">
-        <sql driver="${my-driver}"
-            classpath="${my-classpath}"
+        <sql driver="${psql-driver}"
+            classpath="${psql-classpath}"
             url="${my-url}"
             userid="${my-userid}"
             password="${my-password}"
             src="db/drop_tables.sql" />
-        <sql driver="${my-driver}"
-            classpath="${my-classpath}"
+        <sql driver="${psql-driver}"
+            classpath="${psql-classpath}"
             url="${my-url}"
             userid="${my-userid}"
             password="${my-password}"
             src="db/create_tables.sql" />
-        <sql driver="${my-driver}"
-            classpath="${my-classpath}"
+        <sql driver="${psql-driver}"
+            classpath="${psql-classpath}"
             url="${my-url}"
             userid="${my-userid}"
             password="${my-password}"
             src="db/fill_emp.sql" />
-        <sql driver="${my-driver}"
-            classpath="${my-classpath}"
+        <sql driver="${psql-driver}"
+            classpath="${psql-classpath}"
             url="${my-url}"
             userid="${my-userid}"
             password="${my-password}"
             src="db/fill_div.sql" />
-        <sql driver="${my-driver}"
-            classpath="${my-classpath}"
+        <sql driver="${psql-driver}"
+            classpath="${psql-classpath}"
             url="${my-url}"
             userid="${my-userid}"
             password="${my-password}"
             src="db/fill_pos.sql" />
-        <sql driver="${my-driver}"
-            classpath="${my-classpath}"
+        <sql driver="${psql-driver}"
+            classpath="${psql-classpath}"
             url="${my-url}"
             userid="${my-userid}"
             password="${my-password}"
             src="db/fill_emp_pos.sql" />
     </target>
-
+    
+    <target name="create-db" depends="init-db, fill-db"/>
 </project>
