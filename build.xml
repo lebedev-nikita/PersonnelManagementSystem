@@ -1,74 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project basedir="." default="create-db" name="PersonalManagementSystem">
-    <property name="psql-driver"      value="org.postgresql.Driver" />
-    <property name="psql-classpath"   value="lib/postgresql-42.2.10.jar" />
-    <property name="my-url"         value="jdbc:postgresql://localhost:5432/template1" />
-    <property name="my-userid"      value="postgres" />
-    <property name="my-password"    value="Password" />
+  <property name="psql-driver"      value="org.postgresql.Driver" />
+  <property name="psql-classpath"   value="lib/postgresql-42.2.10.jar" />
+  <property name="psql-url"         value="jdbc:postgresql://localhost:5432/template1" />
+  <property name="psql-userid"      value="postgres" />
+  <property name="psql-password"    value="Password" />
+
+  <property name="my-src"     value="src" />
+  <property name="my-lib"     value="lib" />
+  <property name="my-bin"     value="bin" />
+  <property name="my-reports" value="${my-bin}/reports" />
+  <property name="my-classes" value="${my-bin}/classes" />
+  <property name="my-jardir"  value="${my-bin}/jar" />
+  <property name="my-jarname" value="${my-jardir}/project.jar" />
 
 
-    <target name="init-db" depends="drop-db">
-        <sql driver="${psql-driver}"
-            classpath="${psql-classpath}"
-            url="${my-url}"
-            userid="${my-userid}"
-            password="${my-password}"
-            autocommit="true">
+  <target name="init-db" depends="drop-db">
+      <sql driver="${psql-driver}"
+          classpath="${psql-classpath}"
+          url="${psql-url}"
+          userid="${psql-userid}"
+          password="${psql-password}"
+          autocommit="true">
 
-            CREATE DATABASE LebedevNikitaDB;
-        </sql>
-    </target>
+          CREATE DATABASE LebedevNikitaDB;
+      </sql>
+  </target>
 
-    <target name="drop-db">
-        <sql driver="${psql-driver}"
-            classpath="${psql-classpath}"
-            url="${my-url}"
-            userid="${my-userid}"
-            password="${my-password}"
-            autocommit="true">
+  <target name="drop-db">
+      <sql driver="${psql-driver}"
+          classpath="${psql-classpath}"
+          url="${psql-url}"
+          userid="${psql-userid}"
+          password="${psql-password}"
+          autocommit="true">
 
-            DROP DATABASE LebedevNikitaDB;
-        </sql>
-    </target>
+          DROP DATABASE LebedevNikitaDB;
+      </sql>
+  </target>
 
-    <target name="fill-db">
-        <sql driver="${psql-driver}"
-            classpath="${psql-classpath}"
-            url="${my-url}"
-            userid="${my-userid}"
-            password="${my-password}"
-            src="db/drop_tables.sql" />
-        <sql driver="${psql-driver}"
-            classpath="${psql-classpath}"
-            url="${my-url}"
-            userid="${my-userid}"
-            password="${my-password}"
-            src="db/create_tables.sql" />
-        <sql driver="${psql-driver}"
-            classpath="${psql-classpath}"
-            url="${my-url}"
-            userid="${my-userid}"
-            password="${my-password}"
-            src="db/fill_emp.sql" />
-        <sql driver="${psql-driver}"
-            classpath="${psql-classpath}"
-            url="${my-url}"
-            userid="${my-userid}"
-            password="${my-password}"
-            src="db/fill_div.sql" />
-        <sql driver="${psql-driver}"
-            classpath="${psql-classpath}"
-            url="${my-url}"
-            userid="${my-userid}"
-            password="${my-password}"
-            src="db/fill_pos.sql" />
-        <sql driver="${psql-driver}"
-            classpath="${psql-classpath}"
-            url="${my-url}"
-            userid="${my-userid}"
-            password="${my-password}"
-            src="db/fill_emp_pos.sql" />
-    </target>
-    
-    <target name="create-db" depends="init-db, fill-db"/>
+  <target name="fill-db">
+      <sql driver="${psql-driver}"
+          classpath="${psql-classpath}"
+          url="${psql-url}"
+          userid="${psql-userid}"
+          password="${psql-password}"
+          src="db/drop_tables.sql" />
+      <sql driver="${psql-driver}"
+          classpath="${psql-classpath}"
+          url="${psql-url}"
+          userid="${psql-userid}"
+          password="${psql-password}"
+          src="db/create_tables.sql" />
+      <sql driver="${psql-driver}"
+          classpath="${psql-classpath}"
+          url="${psql-url}"
+          userid="${psql-userid}"
+          password="${psql-password}"
+          src="db/fill_emp.sql" />
+      <sql driver="${psql-driver}"
+          classpath="${psql-classpath}"
+          url="${psql-url}"
+          userid="${psql-userid}"
+          password="${psql-password}"
+          src="db/fill_div.sql" />
+      <sql driver="${psql-driver}"
+          classpath="${psql-classpath}"
+          url="${psql-url}"
+          userid="${psql-userid}"
+          password="${psql-password}"
+          src="db/fill_pos.sql" />
+      <sql driver="${psql-driver}"
+          classpath="${psql-classpath}"
+          url="${psql-url}"
+          userid="${psql-userid}"
+          password="${psql-password}"
+          src="db/fill_emp_pos.sql" />
+  </target>
+
+  <target name="create-db" depends="init-db, fill-db"/>
+
+  <target name="clean-dirs">
+    <delete dir="${my-bin}"/>
+  </target>
+
+  <target name="init-dirs" depends="clean-dirs">
+    <mkdir dir="${my-bin}" />
+    <mkdir dir="${my-classes}" />
+    <mkdir dir="${my-jardir}" />
+    <mkdir dir="${my-reports}" />
+  </target>
+
+  <path id="path-libs">
+    <fileset dir="${my-lib}">
+      <include name="**/*.jar" />
+    </fileset>
+  </path>
+
+  <target name="compile" depends="init-dirs">
+    <javac srcdir="${my-src}" destdir="${my-classes}">
+      <classpath refid="path-libs" />
+    </javac>
+  </target>
+
+  <target name="jar" depends="compile">
+    <jar destfile="${my-jarname}/" basedir="${my-classes}" />
+  </target>
+
+  <path id="application" location="${my-jarname}" />
+
+  <target name="test" depends="jar, create-db">
+    <junit printsummary="yes">
+      <classpath>
+        <path refid="path-libs" />
+        <path refid="application" />
+      </classpath>
+
+      <formatter type="xml" />
+
+      <batchtest fork="yes" todir="${my-reports}">
+        <fileset dir="${my-src}" includes="**/*Test.java"/>
+      </batchtest>
+    </junit>
+  </target>
+
+  <target name="junitreport" depends="test">
+    <junitreport todir="${my-reports}">
+      <fileset dir="${my-reports}" includes="TEST-*.xml"/>
+      <report todir="${my-reports}"/>
+    </junitreport>
+  </target>
+
+  <!-- <path id="toolslib">
+    <path location="${my-lib}/hibernate-tools.jar" />
+    <path location="${my-lib}/hibernate3.jar" />
+    <path location="${my-lib}/freemarker.jar" />
+    <path location="${jdbc.driver.jar}" />
+  </path>
+
+  <taskdef name="hibernatetool"
+         classname="org.hibernate.tool.ant.HibernateToolTask"
+         classpathref="toolslib" /> -->
+
 </project>
