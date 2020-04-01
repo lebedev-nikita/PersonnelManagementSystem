@@ -86,9 +86,6 @@
 
   <target name="init-dirs" depends="clean-dirs">
     <mkdir dir="${my-bin}" />
-    <mkdir dir="${my-classes}" />
-    <mkdir dir="${my-jardir}" />
-    <mkdir dir="${my-reports}" />
   </target>
 
   <path id="path-libs">
@@ -98,18 +95,22 @@
   </path>
 
   <target name="compile" depends="init-dirs">
+    <mkdir dir="${my-classes}" />
     <javac srcdir="${my-src}" destdir="${my-classes}">
       <classpath refid="path-libs" />
     </javac>
+    <copy file="${my-src}/hibernate.cfg.xml" todir="${my-classes}" />
   </target>
 
   <target name="jar" depends="compile">
-    <jar destfile="${my-jarname}/" basedir="${my-classes}" />
+    <mkdir dir="${my-jardir}" />
+    <jar destfile="${my-jarname}/" basedir="${my-classes}"/>
   </target>
 
   <path id="application" location="${my-jarname}" />
 
   <target name="test" depends="jar, create-db">
+    <mkdir dir="${my-reports}" />
     <junit printsummary="yes">
       <classpath>
         <path refid="path-libs" />
@@ -131,15 +132,5 @@
     </junitreport>
   </target>
 
-  <!-- <path id="toolslib">
-    <path location="${my-lib}/hibernate-tools.jar" />
-    <path location="${my-lib}/hibernate3.jar" />
-    <path location="${my-lib}/freemarker.jar" />
-    <path location="${jdbc.driver.jar}" />
-  </path>
-
-  <taskdef name="hibernatetool"
-         classname="org.hibernate.tool.ant.HibernateToolTask"
-         classpathref="toolslib" /> -->
 
 </project>
