@@ -99,9 +99,6 @@ public class EmployeeTableManager
 
 	}
 
-
-	// unchecked
-
 	public List<Employee> listByNameSurname(String name, String surname)
 	{
 		System.out.println("Starting 'listByNameSurname'");

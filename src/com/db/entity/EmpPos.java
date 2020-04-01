@@ -1,9 +1,6 @@
 package com.db.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import java.sql.Date;
 
@@ -12,6 +9,7 @@ import java.sql.Date;
 public class EmpPos
 {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="emp_pos_id")
 	private Integer id;
 

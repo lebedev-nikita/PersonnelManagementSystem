@@ -97,8 +97,6 @@ public class PositionTableManager
 		System.out.println("Finished 'delete'");
 	}
 
-	// unchecked
-
 	public List<Position> listByDivisionId(int divisionId)
 	{
 		System.out.println("Starting 'listByDivisionId'");

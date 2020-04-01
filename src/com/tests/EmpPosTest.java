@@ -17,6 +17,24 @@ public class EmpPosTest
     }
 
     @Test
+    public void test_setId_getId()
+    {
+        tmpEmpPos.setId(10);
+        assertEquals(10, tmpEmpPos.getId().intValue());
+        tmpEmpPos.setId(8);
+        assertEquals(8, tmpEmpPos.getId().intValue());
+    }
+
+    @Test
+    public void test_setSalary_getSalary()
+    {
+        tmpEmpPos.setSalary(100000);
+        assertEquals(100000, tmpEmpPos.getSalary().intValue());
+        tmpEmpPos.setSalary(80000);
+        assertEquals(80000, tmpEmpPos.getSalary().intValue());
+    }
+
+    @Test
     public void test_setEmployeeId_getEmployeeId()
     {
         tmpEmpPos.setEmpId(10);

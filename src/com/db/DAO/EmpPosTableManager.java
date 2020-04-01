@@ -82,6 +82,24 @@ public class EmpPosTableManager
 		System.out.println("Finished 'delete'");
 	}
 
+	public EmpPos getById(int id)
+	{
+		System.out.println("Starting 'getById'");
+
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+
+		EmpPos ret = session.get(EmpPos.class, id);
+
+		session.getTransaction().commit();
+
+		System.out.println("Finished 'getById'");
+		session.close();
+
+		return ret;
+	}
+
+
 	// unchecked
 
 	public List<EmpPos> listByEmpId(int empId)
