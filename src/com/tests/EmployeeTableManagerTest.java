@@ -1,7 +1,7 @@
 package com.tests;
 
-import com.db.dbManagement.EmployeeTableManager;
-import com.hibernate.entity.Employee;
+import com.db.DAO.EmployeeTableManager;
+import com.db.entity.Employee;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -97,8 +97,8 @@ public class EmployeeTableManagerTest
         etm.delete(tmpEmp3);
     }
 
-    @Test
-    public void hqlRequest() {
-        // TODO: удалить этот метод
-    }
+    // @Test
+    // public void hqlRequest() {
+    //     // TODO: удалить этот метод
+    // }
 }

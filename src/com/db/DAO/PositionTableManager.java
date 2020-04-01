@@ -1,4 +1,4 @@
-package com.db.dbManagement;
+package com.db.DAO;
 
 import java.util.List;
 
@@ -6,10 +6,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.db.dbManagement.DAO.PositionTableManagerDAO;
-import com.hibernate.entity.Position;
+import com.db.entity.Position;
 
-public class PositionTableManager implements PositionTableManagerDAO
+public class PositionTableManager
 {
 	private static SessionFactory sessionFactory = null;
 
@@ -24,24 +23,22 @@ public class PositionTableManager implements PositionTableManagerDAO
 		}
 	}
 
-	@Override
-	public List<Position> hqlRequest(String query)
-	{
-		System.out.println("Starting 'hqlRequest'");
-		Session session = sessionFactory.getCurrentSession();
-		session.beginTransaction();
+	// public List<Position> hqlRequest(String query)
+	// {
+	// 	System.out.println("Starting 'hqlRequest'");
+	// 	Session session = sessionFactory.getCurrentSession();
+	// 	session.beginTransaction();
+	//
+	// 	List<Position> listPositions = session.createQuery(query).list();
+	//
+	//
+	// 	session.getTransaction().commit();
+	// 	System.out.println("Finished 'hqlRequest'");
+	// 	session.close();
+	//
+	// 	return listPositions;
+	// }
 
-		List<Position> listPositions = session.createQuery(query).list();
-
-
-		session.getTransaction().commit();
-		System.out.println("Finished 'hqlRequest'");
-		session.close();
-
-		return listPositions;
-	}
-
-	@Override
 	public Position getById(int id)
 	{
 		System.out.println("Starting 'getById'");
@@ -60,7 +57,6 @@ public class PositionTableManager implements PositionTableManagerDAO
 		return myPosition;
 	}
 
-	@Override
 	public void save(Position position)
 	{
 		System.out.println("Starting 'save'");
@@ -74,7 +70,6 @@ public class PositionTableManager implements PositionTableManagerDAO
 		System.out.println("Done!");
 	}
 
-	@Override
 	public void update(Position position)
 	{
 		System.out.println("Starting 'update'");
@@ -88,7 +83,6 @@ public class PositionTableManager implements PositionTableManagerDAO
 		System.out.println("Finished 'update'");
 	}
 
-	@Override
 	public void delete(Position position)
 	{
 		System.out.println("Starting 'delete'");
@@ -105,7 +99,6 @@ public class PositionTableManager implements PositionTableManagerDAO
 
 	// unchecked
 
-	@Override
 	public List<Position> listByDivisionId(int divisionId)
 	{
 		System.out.println("Starting 'listByDivisionId'");
@@ -121,7 +114,6 @@ public class PositionTableManager implements PositionTableManagerDAO
 		return listPositions;
 	}
 
-	@Override
 	public List<Position> listByName(String name)
 	{
 		System.out.println("Starting 'listByName'");

@@ -1,6 +1,6 @@
 package com.tests;
 
-import com.hibernate.entity.Position;
+import com.db.entity.Position;
 import org.junit.Before;
 import org.junit.Test;
 

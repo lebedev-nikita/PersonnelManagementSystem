@@ -1,7 +1,7 @@
 package com.tests;
 
-import com.db.dbManagement.DivisionTableManager;
-import com.hibernate.entity.Division;
+import com.db.DAO.DivisionTableManager;
+import com.db.entity.Division;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -211,9 +211,9 @@ public class DivisionTableManagerTest
         dtm.delete(tmpDiv6);
     }
 
-    @Test
-    public void hqlRequest()
-    {
-        // TODO: удалить этот метод
-    }
+    // @Test
+    // public void hqlRequest()
+    // {
+    //     // TODO: удалить этот метод
+    // }
 }

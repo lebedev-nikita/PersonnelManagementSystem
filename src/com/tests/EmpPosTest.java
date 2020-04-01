@@ -1,6 +1,6 @@
 package com.tests;
 
-import com.hibernate.entity.EmpPos;
+import com.db.entity.EmpPos;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,7 +1,7 @@
 package com.tests;
 
-import com.db.dbManagement.PositionTableManager;
-import com.hibernate.entity.Position;
+import com.db.DAO.PositionTableManager;
+import com.db.entity.Position;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -101,9 +101,9 @@ public class PositionTableManagerTest
         ptm.delete(tmpPos3);
     }
 
-    @Test
-    public void hqlRequest()
-    {
-        // TODO: удалить этот метод
-    }
+    // @Test
+    // public void hqlRequest()
+    // {
+    //     // TODO: удалить этот метод
+    // }
 }

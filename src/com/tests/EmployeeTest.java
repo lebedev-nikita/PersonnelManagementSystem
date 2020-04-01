@@ -1,6 +1,6 @@
 package com.tests;
 
-import com.hibernate.entity.Employee;
+import com.db.entity.Employee;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,11 +1,8 @@
 package com.tests;
 
-import com.db.dbManagement.EmpPosTableManager;
-import com.hibernate.entity.EmpPos;
+import com.db.DAO.EmpPosTableManager;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class EmpPosTableManagerTest
 {
@@ -99,10 +96,10 @@ public class EmpPosTableManagerTest
     // }
     /* ====== */
 
-    @Test
-    public void hqlRequest() {
-        // TODO: delete this method
-    }
+    // @Test
+    // public void hqlRequest() {
+    //     // TODO: delete this method
+    // }
 
     // @Test
     // public void save() {
