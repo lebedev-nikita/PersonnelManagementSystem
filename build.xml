@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project basedir="." default="create-db" name="PersonalManagementSystem">
+<project basedir="." default="test" name="PersonalManagementSystem">
   <property name="psql-driver"      value="org.postgresql.Driver" />
   <property name="psql-classpath"   value="lib/postgresql-42.2.10.jar" />
   <property name="psql-url"         value="jdbc:postgresql://localhost:5432/template1" />
@@ -14,6 +14,17 @@
   <property name="my-jardir"  value="${my-bin}/jar" />
   <property name="my-jarname" value="${my-jardir}/project.jar" />
 
+  <target name="drop-db">
+      <sql driver="${psql-driver}"
+          classpath="${psql-classpath}"
+          url="${psql-url}"
+          userid="${psql-userid}"
+          password="${psql-password}"
+          autocommit="true">
+
+          DROP DATABASE IF EXISTS LebedevNikitaDB;
+      </sql>
+  </target>
 
   <target name="init-db" depends="drop-db">
       <sql driver="${psql-driver}"
@@ -27,31 +38,25 @@
       </sql>
   </target>
 
-  <target name="drop-db">
-      <sql driver="${psql-driver}"
-          classpath="${psql-classpath}"
-          url="${psql-url}"
-          userid="${psql-userid}"
-          password="${psql-password}"
-          autocommit="true">
-
-          DROP DATABASE LebedevNikitaDB;
-      </sql>
+  <target name="drop-tables">
+    <sql driver="${psql-driver}"
+        classpath="${psql-classpath}"
+        url="${psql-url}"
+        userid="${psql-userid}"
+        password="${psql-password}"
+        src="db/drop_tables.sql" />
   </target>
 
-  <target name="fill-db">
-      <sql driver="${psql-driver}"
-          classpath="${psql-classpath}"
-          url="${psql-url}"
-          userid="${psql-userid}"
-          password="${psql-password}"
-          src="db/drop_tables.sql" />
-      <sql driver="${psql-driver}"
-          classpath="${psql-classpath}"
-          url="${psql-url}"
-          userid="${psql-userid}"
-          password="${psql-password}"
-          src="db/create_tables.sql" />
+  <target name="create-tables" depends="drop-tables">
+    <sql driver="${psql-driver}"
+        classpath="${psql-classpath}"
+        url="${psql-url}"
+        userid="${psql-userid}"
+        password="${psql-password}"
+        src="db/create_tables.sql" />
+  </target>
+
+  <target name="fill-tables" depends="create-tables">
       <sql driver="${psql-driver}"
           classpath="${psql-classpath}"
           url="${psql-url}"
@@ -78,13 +83,13 @@
           src="db/fill_emp_pos.sql" />
   </target>
 
-  <target name="create-db" depends="init-db, fill-db"/>
+  <target name="create-db" depends="init-db, fill-tables"/>
 
   <target name="clean-dirs">
     <delete dir="${my-bin}"/>
   </target>
 
-  <target name="init-dirs" depends="clean-dirs">
+  <target name="init-bin" depends="clean-dirs">
     <mkdir dir="${my-bin}" />
   </target>
 
@@ -94,7 +99,7 @@
     </fileset>
   </path>
 
-  <target name="compile" depends="init-dirs">
+  <target name="compile" depends="init-bin">
     <mkdir dir="${my-classes}" />
     <javac srcdir="${my-src}" destdir="${my-classes}">
       <classpath refid="path-libs" />
