@@ -25,7 +25,6 @@ public class EmployeeTableManager
 
 	// public List<Employee> hqlRequest(String query)
 	// {
-	// 	System.out.println("Starting 'hqlRequest'");
 	// 	Session session = sessionFactory.getCurrentSession();
 	// 	session.beginTransaction();
 	//
@@ -33,7 +32,6 @@ public class EmployeeTableManager
 	//
 	//
 	// 	session.getTransaction().commit();
-	// 	System.out.println("Finished 'hqlRequest'");
 	// 	session.close();
 	//
 	// 	return listEmployees;
@@ -41,7 +39,6 @@ public class EmployeeTableManager
 
 	public Employee getById(int id)
 	{
-		System.out.println("Starting 'getById'");
 
 		Session session = sessionFactory.getCurrentSession();
 
@@ -50,7 +47,6 @@ public class EmployeeTableManager
 		Employee myEmployee = session.get(Employee.class, id);
 		session.getTransaction().commit();
 
-		System.out.println("Finished 'getById'");
 		session.close();
 
 		return myEmployee;
@@ -58,7 +54,6 @@ public class EmployeeTableManager
 
 	public int save(Employee employee)
 	{
-		System.out.println("Starting 'save'");
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
@@ -66,14 +61,12 @@ public class EmployeeTableManager
 
 		session.getTransaction().commit();
 		session.close();
-		System.out.println("Done!");
 
 		return id;
 	}
 
 	public void update(Employee employee)
 	{
-		System.out.println("Starting 'update'");
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
@@ -81,12 +74,10 @@ public class EmployeeTableManager
 
 		session.getTransaction().commit();
 		session.close();
-		System.out.println("Finished 'update'");
 	}
 
 	public void delete(Employee employee)
 	{
-		System.out.println("Starting 'delete'");
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
@@ -95,13 +86,11 @@ public class EmployeeTableManager
 
 		session.getTransaction().commit();
 		session.close();
-		System.out.println("Finished 'delete'");
 
 	}
 
 	public List<Employee> listByNameSurname(String name, String surname)
 	{
-		System.out.println("Starting 'listByNameSurname'");
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
@@ -109,7 +98,6 @@ public class EmployeeTableManager
 														   "%' and surname like '%" + surname + "%'").list();
 
 		session.getTransaction().commit();
-		System.out.println("Finished 'listByNameSurname'");
 		session.close();
 
 		return listEmployees;

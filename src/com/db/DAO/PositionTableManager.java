@@ -25,7 +25,6 @@ public class PositionTableManager
 
 	// public List<Position> hqlRequest(String query)
 	// {
-	// 	System.out.println("Starting 'hqlRequest'");
 	// 	Session session = sessionFactory.getCurrentSession();
 	// 	session.beginTransaction();
 	//
@@ -33,7 +32,6 @@ public class PositionTableManager
 	//
 	//
 	// 	session.getTransaction().commit();
-	// 	System.out.println("Finished 'hqlRequest'");
 	// 	session.close();
 	//
 	// 	return listPositions;
@@ -41,7 +39,6 @@ public class PositionTableManager
 
 	public Position getById(int id)
 	{
-		System.out.println("Starting 'getById'");
 
 		Session session = sessionFactory.getCurrentSession();
 
@@ -51,7 +48,6 @@ public class PositionTableManager
 
 		session.getTransaction().commit();
 
-		System.out.println("Finished 'getById'");
 		session.close();
 
 		return myPosition;
@@ -59,7 +55,6 @@ public class PositionTableManager
 
 	public void save(Position position)
 	{
-		System.out.println("Starting 'save'");
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
@@ -67,12 +62,10 @@ public class PositionTableManager
 
 		session.getTransaction().commit();
 		session.close();
-		System.out.println("Done!");
 	}
 
 	public void update(Position position)
 	{
-		System.out.println("Starting 'update'");
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
@@ -80,12 +73,10 @@ public class PositionTableManager
 
 		session.getTransaction().commit();
 		session.close();
-		System.out.println("Finished 'update'");
 	}
 
 	public void delete(Position position)
 	{
-		System.out.println("Starting 'delete'");
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
@@ -94,19 +85,16 @@ public class PositionTableManager
 
 		session.getTransaction().commit();
 		session.close();
-		System.out.println("Finished 'delete'");
 	}
 
 	public List<Position> listByDivisionId(int divisionId)
 	{
-		System.out.println("Starting 'listByDivisionId'");
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
 		List<Position> listPositions = session.createQuery("from Position where divisionId=" + divisionId).list();
 
 		session.getTransaction().commit();
-		System.out.println("Finished 'listByDivisionId'");
 		session.close();
 
 		return listPositions;
@@ -114,14 +102,12 @@ public class PositionTableManager
 
 	public List<Position> listByName(String name)
 	{
-		System.out.println("Starting 'listByName'");
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
 		List<Position> listPositions = session.createQuery("FROM Position WHERE name LIKE '%" + name +"%'").list();
 
 		session.getTransaction().commit();
-		System.out.println("Finished 'listByName'");
 		session.close();
 
 		return listPositions;

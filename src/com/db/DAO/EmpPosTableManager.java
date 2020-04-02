@@ -25,7 +25,6 @@ public class EmpPosTableManager
 
 	// public List<EmpPos> hqlRequest(String query)
 	// {
-	// 	System.out.println("Starting 'hqlRequest'");
 	// 	Session session = sessionFactory.getCurrentSession();
 	// 	session.beginTransaction();
 	//
@@ -33,7 +32,6 @@ public class EmpPosTableManager
 	//
 	//
 	// 	session.getTransaction().commit();
-	// 	System.out.println("Finished 'hqlRequest'");
 	// 	session.close();
 	//
 	// 	return listDivPos;
@@ -41,7 +39,6 @@ public class EmpPosTableManager
 
 	public void save(EmpPos empPos)
 	{
-		System.out.println("Starting 'save'");
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
@@ -49,12 +46,10 @@ public class EmpPosTableManager
 
 		session.getTransaction().commit();
 		session.close();
-		System.out.println("Finished 'save'!");
 	}
 
 	public void update(EmpPos empPos)
 	{
-		System.out.println("Starting 'update'");
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
@@ -62,29 +57,21 @@ public class EmpPosTableManager
 
 		session.getTransaction().commit();
 		session.close();
-		System.out.println("Finished 'update'");
 	}
 
 	public void delete(EmpPos empPos)
 	{
-		System.out.println("Starting 'delete'");
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
-		System.out.println(79);
 		session.delete(empPos);
-		System.out.println(81);
 
 		session.getTransaction().commit();
-		System.out.println(84);
 		session.close();
-		System.out.println(86);
-		System.out.println("Finished 'delete'");
 	}
 
 	public EmpPos getById(int id)
 	{
-		System.out.println("Starting 'getById'");
 
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
@@ -93,7 +80,6 @@ public class EmpPosTableManager
 
 		session.getTransaction().commit();
 
-		System.out.println("Finished 'getById'");
 		session.close();
 
 		return ret;
@@ -104,7 +90,6 @@ public class EmpPosTableManager
 
 	public List<EmpPos> listByEmpId(int empId)
 	{
-		System.out.println("Starting 'listByEmpId'");
 
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
@@ -113,7 +98,6 @@ public class EmpPosTableManager
 
 		session.getTransaction().commit();
 
-		System.out.println("Finished 'listByEmpId'");
 		session.close();
 
 		return listEmpPos;
@@ -121,7 +105,6 @@ public class EmpPosTableManager
 
 	public List<EmpPos> listByPosId(int posId)
 	{
-		System.out.println("Starting 'listByEmpId'");
 
 		Session session = sessionFactory.getCurrentSession();
 
@@ -131,7 +114,6 @@ public class EmpPosTableManager
 
 		session.getTransaction().commit();
 
-		System.out.println("Finished 'listByEmpId'");
 		session.close();
 
 		return listEmpPos;
